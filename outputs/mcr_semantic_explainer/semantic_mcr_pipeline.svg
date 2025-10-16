@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+<rect width="1600" height="1000" fill="#101418"/>
+<text x="40" y="40" fill="#e6edf3" font-size="30" font-family="monospace" font-weight="bold">Semantic-Weighted MCR Pipeline</text>
+<text x="40" y="72" fill="#9fb0c0" font-size="18" font-family="monospace" font-weight="normal">VLM assessment -&gt; semantic weights -&gt; path-level collision cost</text>
+<rect x="30" y="100" width="740" height="390" rx="18" fill="#171d23" stroke="#2e3842" stroke-width="2"/>
+<text x="54" y="140" fill="#e6edf3" font-size="24" font-family="monospace" font-weight="bold">1. VLM scene assessment to semantic weights</text>
+<rect x="54" y="158" width="692" height="86" rx="12" fill="#101418" stroke="#2e3842" stroke-width="1.5"/>
+<text x="72" y="186" fill="#e6edf3" font-size="17" font-family="monospace" font-weight="bold">Fragile vase | score=0.94 | class=fragile | w=9.0</text>
+<text x="72" y="214" fill="#9fb0c0" font-size="15" font-family="monospace" font-weight="normal"><tspan x="72" dy="0">High breakage risk; should be treated as near-hard constraint.</tspan></text>
+<rect x="54" y="258" width="692" height="86" rx="12" fill="#101418" stroke="#2e3842" stroke-width="1.5"/>
+<text x="72" y="286" fill="#e6edf3" font-size="17" font-family="monospace" font-weight="bold">Knife block | score=0.91 | class=dangerous | w=8.0</text>
+<text x="72" y="314" fill="#9fb0c0" font-size="15" font-family="monospace" font-weight="normal"><tspan x="72" dy="0">Sharp / hazardous object; collision should be strongly</tspan><tspan x="72" dy="20">discouraged.</tspan></text>
+<rect x="54" y="358" width="692" height="86" rx="12" fill="#101418" stroke="#2e3842" stroke-width="1.5"/>
+<text x="72" y="386" fill="#e6edf3" font-size="17" font-family="monospace" font-weight="bold">Empty box | score=0.18 | class=soft-contact | w=1.5</text>
+<text x="72" y="414" fill="#9fb0c0" font-size="15" font-family="monospace" font-weight="normal"><tspan x="72" dy="0">Cheap to bump or push aside.</tspan></text>
+<rect x="54" y="458" width="692" height="86" rx="12" fill="#101418" stroke="#2e3842" stroke-width="1.5"/>
+<text x="72" y="486" fill="#e6edf3" font-size="17" font-family="monospace" font-weight="bold">Dish towel | score=0.08 | class=soft-contact | w=0.5</text>
+<text x="72" y="514" fill="#9fb0c0" font-size="15" font-family="monospace" font-weight="normal"><tspan x="72" dy="0">Benign cloth contact.</tspan></text>
+<rect x="54" y="558" width="692" height="86" rx="12" fill="#101418" stroke="#2e3842" stroke-width="1.5"/>
+<text x="72" y="586" fill="#e6edf3" font-size="17" font-family="monospace" font-weight="bold">Sponge | score=0.12 | class=soft-contact | w=1.0</text>
+<text x="72" y="614" fill="#9fb0c0" font-size="15" font-family="monospace" font-weight="normal"><tspan x="72" dy="0">Minor clutter item with low consequence.</tspan></text>
+<rect x="800" y="100" width="770" height="390" rx="18" fill="#171d23" stroke="#2e3842" stroke-width="2"/>
+<text x="824" y="140" fill="#e6edf3" font-size="24" font-family="monospace" font-weight="bold">2. Standard MCR minimizes number of collided objects</text>
+<line x1="840.0" y1="303.8095238095238" x2="1041.9512195121952" y2="180.0" stroke="#4ade80" stroke-width="6" stroke-linecap="round"/>
+<line x1="840.0" y1="303.8095238095238" x2="1008.2926829268292" y2="402.85714285714283" stroke="#2e3842" stroke-width="3" stroke-linecap="round"/>
+<line x1="1041.9512195121952" y1="180.0" x2="1243.9024390243903" y2="180.0" stroke="#4ade80" stroke-width="6" stroke-linecap="round"/>
+<line x1="1243.9024390243903" y1="180.0" x2="1530.0" y2="303.8095238095238" stroke="#4ade80" stroke-width="6" stroke-linecap="round"/>
+<line x1="1530.0" y1="303.8095238095238" x2="1344.878048780488" y2="402.85714285714283" stroke="#2e3842" stroke-width="3" stroke-linecap="round"/>
+<line x1="1008.2926829268292" y1="402.85714285714283" x2="1176.5853658536585" y2="440.0" stroke="#2e3842" stroke-width="3" stroke-linecap="round"/>
+<line x1="1176.5853658536585" y1="440.0" x2="1344.878048780488" y2="402.85714285714283" stroke="#2e3842" stroke-width="3" stroke-linecap="round"/>
+<circle cx="840.0" cy="303.8095238095238" r="24" fill="#fbbf24" stroke="#101418" stroke-width="3"/>
+<text x="798.0" y="269.8095238095238" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="798.0" dy="0">start</tspan></text>
+<text x="784.0" y="347.8095238095238" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="784.0" dy="0">free</tspan></text>
+<circle cx="1041.9512195121952" cy="180.0" r="24" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="999.9512195121952" y="146.0" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="999.9512195121952" dy="0">fragile route</tspan><tspan x="999.9512195121952" dy="24">1</tspan></text>
+<text x="985.9512195121952" y="224.0" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="985.9512195121952" dy="0">Fragile vase</tspan></text>
+<circle cx="1243.9024390243903" cy="180.0" r="24" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="1201.9024390243903" y="146.0" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="1201.9024390243903" dy="0">fragile route</tspan><tspan x="1201.9024390243903" dy="24">2</tspan></text>
+<text x="1187.9024390243903" y="224.0" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="1187.9024390243903" dy="0">Knife block</tspan><tspan x="1187.9024390243903" dy="18">Fragile vase</tspan></text>
+<circle cx="1008.2926829268292" cy="402.85714285714283" r="24" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="966.2926829268292" y="368.85714285714283" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="966.2926829268292" dy="0">soft route</tspan><tspan x="966.2926829268292" dy="24">1</tspan></text>
+<text x="952.2926829268292" y="446.85714285714283" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="952.2926829268292" dy="0">Dish towel</tspan></text>
+<circle cx="1176.5853658536585" cy="440.0" r="24" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="1134.5853658536585" y="406.0" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="1134.5853658536585" dy="0">soft route</tspan><tspan x="1134.5853658536585" dy="24">2</tspan></text>
+<text x="1120.5853658536585" y="484.0" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="1120.5853658536585" dy="0">Dish towel</tspan><tspan x="1120.5853658536585" dy="18">Empty box</tspan></text>
+<circle cx="1344.878048780488" cy="402.85714285714283" r="24" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="1302.878048780488" y="368.85714285714283" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="1302.878048780488" dy="0">soft route</tspan><tspan x="1302.878048780488" dy="24">3</tspan></text>
+<text x="1288.878048780488" y="446.85714285714283" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="1288.878048780488" dy="0">Sponge</tspan><tspan x="1288.878048780488" dy="18">Dish towel</tspan><tspan x="1288.878048780488" dy="18">Empty box</tspan></text>
+<circle cx="1530.0" cy="303.8095238095238" r="24" fill="#fbbf24" stroke="#101418" stroke-width="3"/>
+<text x="1488.0" y="269.8095238095238" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="1488.0" dy="0">goal</tspan></text>
+<text x="1474.0" y="347.8095238095238" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="1474.0" dy="0">free</tspan></text>
+<rect x="828" y="340" width="714" height="118" rx="14" fill="#101418" stroke="#2e3842" stroke-width="2"/>
+<text x="846" y="372" fill="#e6edf3" font-size="17" font-family="monospace" font-weight="normal"><tspan x="846" dy="0">path: start -&gt; fragile_route_1 -&gt; fragile_route_2 -&gt; goal</tspan><tspan x="846" dy="24">collision set: {fragile_vase,knife_block}</tspan><tspan x="846" dy="24">objects: Fragile vase, Knife block</tspan><tspan x="846" dy="24">collision count: 2</tspan><tspan x="846" dy="24">semantic weight: 17.0</tspan></text>
+<rect x="30" y="530" width="740" height="430" rx="18" fill="#171d23" stroke="#2e3842" stroke-width="2"/>
+<text x="54" y="570" fill="#e6edf3" font-size="24" font-family="monospace" font-weight="bold">3. Semantic MCR minimizes total semantic consequence</text>
+<line x1="70.0" y1="733.8095238095239" x2="263.1707317073171" y2="610.0" stroke="#2e3842" stroke-width="3" stroke-linecap="round"/>
+<line x1="70.0" y1="733.8095238095239" x2="230.97560975609758" y2="832.8571428571429" stroke="#4ade80" stroke-width="6" stroke-linecap="round"/>
+<line x1="263.1707317073171" y1="610.0" x2="456.3414634146342" y2="610.0" stroke="#2e3842" stroke-width="3" stroke-linecap="round"/>
+<line x1="456.3414634146342" y1="610.0" x2="730.0" y2="733.8095238095239" stroke="#2e3842" stroke-width="3" stroke-linecap="round"/>
+<line x1="730.0" y1="733.8095238095239" x2="552.9268292682927" y2="832.8571428571429" stroke="#4ade80" stroke-width="6" stroke-linecap="round"/>
+<line x1="230.97560975609758" y1="832.8571428571429" x2="391.95121951219517" y2="870.0" stroke="#4ade80" stroke-width="6" stroke-linecap="round"/>
+<line x1="391.95121951219517" y1="870.0" x2="552.9268292682927" y2="832.8571428571429" stroke="#4ade80" stroke-width="6" stroke-linecap="round"/>
+<circle cx="70.0" cy="733.8095238095239" r="24" fill="#fbbf24" stroke="#101418" stroke-width="3"/>
+<text x="28.0" y="699.8095238095239" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="28.0" dy="0">start</tspan></text>
+<text x="14.0" y="777.8095238095239" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="14.0" dy="0">free</tspan></text>
+<circle cx="263.1707317073171" cy="610.0" r="24" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="221.1707317073171" y="576.0" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="221.1707317073171" dy="0">fragile route</tspan><tspan x="221.1707317073171" dy="24">1</tspan></text>
+<text x="207.1707317073171" y="654.0" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="207.1707317073171" dy="0">Fragile vase</tspan></text>
+<circle cx="456.3414634146342" cy="610.0" r="24" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="414.3414634146342" y="576.0" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="414.3414634146342" dy="0">fragile route</tspan><tspan x="414.3414634146342" dy="24">2</tspan></text>
+<text x="400.3414634146342" y="654.0" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="400.3414634146342" dy="0">Knife block</tspan><tspan x="400.3414634146342" dy="18">Fragile vase</tspan></text>
+<circle cx="230.97560975609758" cy="832.8571428571429" r="24" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="188.97560975609758" y="798.8571428571429" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="188.97560975609758" dy="0">soft route</tspan><tspan x="188.97560975609758" dy="24">1</tspan></text>
+<text x="174.97560975609758" y="876.8571428571429" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="174.97560975609758" dy="0">Dish towel</tspan></text>
+<circle cx="391.95121951219517" cy="870.0" r="24" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="349.95121951219517" y="836.0" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="349.95121951219517" dy="0">soft route</tspan><tspan x="349.95121951219517" dy="24">2</tspan></text>
+<text x="335.95121951219517" y="914.0" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="335.95121951219517" dy="0">Dish towel</tspan><tspan x="335.95121951219517" dy="18">Empty box</tspan></text>
+<circle cx="552.9268292682927" cy="832.8571428571429" r="24" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="510.92682926829275" y="798.8571428571429" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="510.92682926829275" dy="0">soft route</tspan><tspan x="510.92682926829275" dy="24">3</tspan></text>
+<text x="496.92682926829275" y="876.8571428571429" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="496.92682926829275" dy="0">Sponge</tspan><tspan x="496.92682926829275" dy="18">Dish towel</tspan><tspan x="496.92682926829275" dy="18">Empty box</tspan></text>
+<circle cx="730.0" cy="733.8095238095239" r="24" fill="#fbbf24" stroke="#101418" stroke-width="3"/>
+<text x="688.0" y="699.8095238095239" fill="#e6edf3" font-size="14" font-family="monospace" font-weight="bold"><tspan x="688.0" dy="0">goal</tspan></text>
+<text x="674.0" y="777.8095238095239" fill="#9fb0c0" font-size="13" font-family="monospace" font-weight="normal"><tspan x="674.0" dy="0">free</tspan></text>
+<rect x="58" y="810" width="684" height="118" rx="14" fill="#101418" stroke="#2e3842" stroke-width="2"/>
+<text x="76" y="842" fill="#e6edf3" font-size="17" font-family="monospace" font-weight="normal"><tspan x="76" dy="0">path: start -&gt; soft_route_1 -&gt; soft_route_2 -&gt; soft_route_3 -&gt; goal</tspan><tspan x="76" dy="24">collision set: {cardboard_box,dish_towel,sponge}</tspan><tspan x="76" dy="24">objects: Empty box, Dish towel, Sponge</tspan><tspan x="76" dy="24">collision count: 3</tspan><tspan x="76" dy="24">semantic weight: 3.0</tspan></text>
+<rect x="800" y="530" width="770" height="430" rx="18" fill="#171d23" stroke="#2e3842" stroke-width="2"/>
+<text x="824" y="570" fill="#e6edf3" font-size="24" font-family="monospace" font-weight="bold">4. Why history-dependent collisions change the state</text>
+<text x="828" y="614" fill="#e6edf3" font-size="18" font-family="monospace" font-weight="normal"><tspan x="828" dy="0">Professor&#x27;s modification:</tspan><tspan x="828" dy="26">The same roadmap vertex can have different collision sets depending</tspan><tspan x="828" dy="26">on which path history reached it.</tspan><tspan x="828" dy="26"></tspan><tspan x="828" dy="26">That means state is no longer just vertex v.</tspan><tspan x="828" dy="26">It becomes (v, accumulated_collision_set).</tspan><tspan x="828" dy="26"></tspan><tspan x="828" dy="26">Greedy danger:</tspan><tspan x="828" dy="26">If you keep only one best subset at each vertex, you may discard a</tspan><tspan x="828" dy="26">history that looks slightly worse now but avoids a dangerous object later.</tspan><tspan x="828" dy="26"></tspan><tspan x="828" dy="26">Minimum correct change:</tspan><tspan x="828" dy="26">Keep multiple non-dominated subsets per vertex.</tspan><tspan x="828" dy="26"></tspan><tspan x="828" dy="26">Practical approximation:</tspan><tspan x="828" dy="26">Use beam search or bounded-frontier pruning with semantic cost.</tspan></text>
+<text x="828" y="890" fill="#e6edf3" font-size="20" font-family="monospace" font-weight="bold">Example same-vertex ambiguity</text>
+<circle cx="918" cy="980" r="28" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="872" y="1034" fill="#e6edf3" font-size="15" font-family="monospace" font-weight="normal">history A</text>
+<circle cx="1108" cy="980" r="28" fill="#fbbf24" stroke="#101418" stroke-width="3"/>
+<text x="1062" y="1034" fill="#e6edf3" font-size="15" font-family="monospace" font-weight="normal">same vertex v</text>
+<circle cx="1328" cy="980" r="28" fill="#60a5fa" stroke="#101418" stroke-width="3"/>
+<text x="1282" y="1034" fill="#e6edf3" font-size="15" font-family="monospace" font-weight="normal">future</text>
+<circle cx="1108" cy="1090" r="28" fill="#f87171" stroke="#101418" stroke-width="3"/>
+<text x="1062" y="1144" fill="#e6edf3" font-size="15" font-family="monospace" font-weight="normal">history B</text>
+<line x1="948" y1="980" x2="1078" y2="980" stroke="#2e3842" stroke-width="4" stroke-linecap="round"/>
+<text x="979.0" y="970.0" fill="#9fb0c0" font-size="14" font-family="monospace" font-weight="normal">{towel}</text>
+<line x1="1138" y1="980" x2="1298" y2="980" stroke="#2e3842" stroke-width="4" stroke-linecap="round"/>
+<text x="1184.0" y="970.0" fill="#9fb0c0" font-size="14" font-family="monospace" font-weight="normal">+ knife block</text>
+<line x1="1108" y1="1060" x2="1108" y2="1010" stroke="#2e3842" stroke-width="4" stroke-linecap="round"/>
+<text x="1074.0" y="1025.0" fill="#9fb0c0" font-size="14" font-family="monospace" font-weight="normal">{box}</text>
+</svg>
