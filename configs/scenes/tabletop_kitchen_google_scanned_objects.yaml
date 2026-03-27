@@ -1,0 +1,61 @@
+name: "Tabletop Kitchen Google Scanned Objects"
+description: "Kitchen tabletop scene mixing imported Google scanned tableware with modular pantry proxies."
+tags: ["kitchen", "google-scanned-objects", "dataset", "tabletop"]
+
+object_libraries:
+  - "configs/objects/household_and_grocery_presets.yaml"
+  - "configs/objects/google_scanned_objects_kitchen.yaml"
+
+robot:
+  type: "fr3v2"
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [-0.35, -0.25, 0.625]
+  base_orientation: [0, 0, 0]
+  initial_pose: "ready"
+
+environment:
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+  ground:
+    urdf: "plane.urdf"
+
+camera:
+  distance: 0.95
+  yaw: 82
+  pitch: -38
+  target: [0.05, 0.05, 0.675]
+
+objects:
+  - id: "ramekin"
+    preset: "gso_threshold_ramekin_white_porcelain"
+    position: [-0.10, 0.10, 0.625]
+    orientation_euler: [0.0, 0.0, 0.3]
+    label:
+      text: "Google scanned ramekin"
+      offset: [0.0, 0.0, 0.10]
+      color: [0.9, 0.9, 0.9]
+      size: 1.0
+  - id: "teapot"
+    preset: "gso_threshold_porcelain_teapot_white"
+    position: [0.08, 0.12, 0.625]
+    orientation_euler: [0.0, 0.0, -0.6]
+    label:
+      text: "Google scanned teapot"
+      offset: [0.0, 0.0, 0.14]
+      color: [0.9, 0.9, 0.9]
+      size: 1.0
+  - id: "serving_bowl"
+    preset: "gso_threshold_porcelain_serving_bowl_coupe_white"
+    position: [0.18, -0.02, 0.625]
+    orientation_euler: [0.0, 0.0, 0.2]
+    label:
+      text: "Google scanned bowl"
+      offset: [0.0, 0.0, 0.10]
+      color: [0.9, 0.9, 0.9]
+      size: 1.0
+  - { id: "spice_jar", preset: "spice_jar_proxy", position: [-0.04, -0.04, 0.670] }
+  - { id: "spice_jar_cap", type: "cylinder", position: [-0.04, -0.04, 0.720], radius: 0.023, height: 0.01, color: "green" }
+  - { id: "oil_bottle", preset: "oil_bottle_proxy", position: [0.20, 0.18, 0.695] }
+  - { id: "pepper_bottle", preset: "pepper_bottle_proxy", position: [-0.16, 0.00, 0.675] }
+  - { id: "pepper_cap", type: "cylinder", position: [-0.16, 0.00, 0.730], radius: 0.021, height: 0.01, color: "red" }

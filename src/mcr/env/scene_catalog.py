@@ -19,6 +19,7 @@ SCENE_ALIASES = {
     "scene7": "tabletop_kitchen_grocery_objects",
     "scene8": "tabletop_dense_household_clutter_reach",
     "scene9": "tabletop_kitchen_grocery_dataset_staging",
+    "scene10": "tabletop_kitchen_google_scanned_objects",
 }
 
 

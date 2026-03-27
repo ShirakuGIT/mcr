@@ -1,0 +1,19 @@
+presets:
+  gso_threshold_ramekin_white_porcelain:
+    type: mesh
+    mesh: assets/datasets/google_scanned_objects/threshold_ramekin_white_porcelain/meshes/model.obj
+    mesh_scale: [1.0, 1.0, 1.0]
+    color: white
+    mass: 0.2
+  gso_threshold_porcelain_teapot_white:
+    type: mesh
+    mesh: assets/datasets/google_scanned_objects/threshold_porcelain_teapot_white/meshes/model.obj
+    mesh_scale: [1.0, 1.0, 1.0]
+    color: white
+    mass: 0.5
+  gso_threshold_porcelain_serving_bowl_coupe_white:
+    type: mesh
+    mesh: assets/datasets/google_scanned_objects/threshold_porcelain_serving_bowl_coupe_white/meshes/model.obj
+    mesh_scale: [1.0, 1.0, 1.0]
+    color: white
+    mass: 0.3

@@ -36,3 +36,4 @@ Link: https://sites.google.com/view/sg-bot/dataset
 2. Create or update reusable presets in `configs/objects/`.
 3. Point scenes at those presets with `object_libraries` plus `preset` fields.
 4. Use `tabletop_kitchen_grocery_dataset_staging` as the first replacement target because it already mixes presets with a stand-in scanned asset slot.
+5. `tabletop_kitchen_google_scanned_objects` now demonstrates three real imported Google scanned kitchen objects wired through reusable presets.

@@ -73,6 +73,7 @@ Supported object types:
 - `tabletop_push_rotate_nonprehensile`
 - `tabletop_kitchen_grocery_objects`
 - `tabletop_kitchen_grocery_dataset_staging`
+- `tabletop_kitchen_google_scanned_objects`
 - `tabletop_dense_household_clutter_reach`
 
 Older scene names such as `tabletop_cluttered_path` still resolve through aliases in the catalog.

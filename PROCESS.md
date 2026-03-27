@@ -17,6 +17,7 @@ Move from one-off scene scripts to a scene catalog with stable environment manag
 4. Added a visual fallback in `RobotManager` so the FR3 arm stays visibly shaded even when COLLADA material parsing is incomplete.
 5. Added `environment.yml`, a top-level `README.md`, and `docs/datasets.md`.
 6. Added reusable object preset libraries in `configs/objects/` and a dataset-staging kitchen scene for future YCB/GSO imports.
+7. Imported three official Google scanned kitchen assets and wired them into a dedicated YAML scene plus reusable mesh presets.
 
 ### Remaining
 1. Decide whether to fully retire `scenes/*.py` after the YAML scenes cover every case you still care about.
