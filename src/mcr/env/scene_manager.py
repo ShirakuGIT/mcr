@@ -14,6 +14,13 @@ from src.mcr.env.scene_catalog import PROJECT_ROOT
 class SceneManager:
     """Loads and builds PyBullet environments from YAML configurations."""
 
+    VIEWPOINTS = {
+        "default": {},
+        "top_down": {"distance": 1.05, "yaw": 90, "pitch": -89},
+        "front": {"distance": 0.95, "yaw": 0, "pitch": -20},
+        "back": {"distance": 0.95, "yaw": 180, "pitch": -20},
+    }
+
     COLORS = {
         "red": [0.85, 0.15, 0.15, 1],
         "green": [0.15, 0.70, 0.15, 1],
@@ -54,7 +61,7 @@ class SceneManager:
         p.setGravity(0, 0, -9.81)
         return self.client_id
 
-    def load_scene(self, yaml_path):
+    def load_scene(self, yaml_path, view=None):
         """Build the scene from YAML."""
         yaml_path = Path(yaml_path).resolve()
         with yaml_path.open("r", encoding="utf-8") as handle:
@@ -92,7 +99,7 @@ class SceneManager:
         for obj in data.get("objects", []) + data.get("obstacles", []):
             self._create_obstacle(self._expand_object_spec(obj))
 
-        cam = data.get("camera", {})
+        cam = self._resolve_camera(data.get("camera", {}), view=view)
         if cam:
             p.resetDebugVisualizerCamera(
                 cameraDistance=cam.get("distance", 1.5),
@@ -105,7 +112,7 @@ class SceneManager:
 
     def _create_obstacle(self, obs):
         """Create an object based on type."""
-        color = self._resolve_color(obs.get("color", "blue"))
+        color = self._resolve_color(obs["color"]) if "color" in obs else None
 
         if obs["type"] == "proc_grid":
             return self._create_proc_grid(obs)
@@ -152,8 +159,14 @@ class SceneManager:
         elif obs["type"] == "mesh":
             mesh_path = str(self._resolve_path(obs["mesh"]))
             scale = obs.get("mesh_scale", [1.0, 1.0, 1.0])
+            mesh_color = color or [1.0, 1.0, 1.0, 1.0]
             col_id = p.createCollisionShape(p.GEOM_MESH, fileName=mesh_path, meshScale=scale)
-            vis_id = p.createVisualShape(p.GEOM_MESH, fileName=mesh_path, meshScale=scale, rgbaColor=color)
+            vis_id = p.createVisualShape(
+                p.GEOM_MESH,
+                fileName=mesh_path,
+                meshScale=scale,
+                rgbaColor=mesh_color,
+            )
             body_id = p.createMultiBody(
                 baseMass=mass,
                 baseCollisionShapeIndex=col_id,
@@ -169,7 +182,7 @@ class SceneManager:
                 useFixedBase=obs.get("use_fixed_base", False),
                 globalScaling=obs.get("scale", 1.0),
             )
-            if "color" in obs:
+            if color is not None:
                 p.changeVisualShape(body_id, -1, rgbaColor=color)
         else:
             print(f"Warning: Unknown obstacle type {obs['type']}")
@@ -270,6 +283,21 @@ class SceneManager:
         merged = dict(preset)
         merged.update(obj)
         merged.pop("preset", None)
+        return merged
+
+    def _resolve_camera(self, camera_data, view=None):
+        cam = dict(camera_data or {})
+        if not cam:
+            cam = {"target": [0, 0, 0.5]}
+
+        scene_views = cam.pop("views", {})
+        selected_view = view or "default"
+        if selected_view not in self.VIEWPOINTS and selected_view not in scene_views:
+            raise KeyError(f"Unknown camera view: {selected_view}")
+
+        merged = dict(cam)
+        merged.update(self.VIEWPOINTS.get(selected_view, {}))
+        merged.update(scene_views.get(selected_view, {}))
         return merged
 
     def _resolve_path(self, path_value):

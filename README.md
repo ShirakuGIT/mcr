@@ -15,7 +15,9 @@ Use either Pixi or Conda.
 ### Pixi
 ```bash
 pixi run list-scenes
+pixi run list-views
 pixi run run --scene tabletop_kitchen_grocery_objects
+pixi run run --scene tabletop_kitchen_google_scanned_objects --view top_down
 ```
 
 ### Conda
@@ -23,8 +25,16 @@ pixi run run --scene tabletop_kitchen_grocery_objects
 conda env create -f environment.yml
 conda activate mcr-robotics
 python run.py --list-scenes
+python run.py --list-views
 python run.py --scene tabletop_scattered_cylinders_path_planning
+python run.py --scene tabletop_kitchen_google_scanned_objects --view front
 ```
+
+Available camera views:
+- `default`
+- `top_down`
+- `front`
+- `back`
 
 ## Scene Authoring
 Scenes live under `configs/scenes/` and follow a data-first layout:
@@ -74,6 +84,7 @@ Supported object types:
 - `tabletop_kitchen_grocery_objects`
 - `tabletop_kitchen_grocery_dataset_staging`
 - `tabletop_kitchen_google_scanned_objects`
+- `tabletop_pantry_google_scanned_objects`
 - `tabletop_dense_household_clutter_reach`
 
 Older scene names such as `tabletop_cluttered_path` still resolve through aliases in the catalog.
@@ -92,3 +103,12 @@ objects:
 ```
 
 This lets you swap a primitive proxy for a mesh or URDF-backed asset by editing one preset instead of every scene.
+
+## Fuel Normalization
+For Gazebo Fuel imports, use:
+
+```bash
+python scripts/normalize_fuel_asset.py --emit-preset assets/datasets/google_scanned_objects/<asset-dir>
+```
+
+That mirrors `texture.png` next to each OBJ, computes mesh extents, and prints a preset stub you can paste into `configs/objects/`.

@@ -1,0 +1,73 @@
+name: "Tabletop Pantry Google Scanned Objects"
+description: "Pantry and grocery tabletop scene using imported Google scanned product packages."
+tags: ["pantry", "grocery", "google-scanned-objects", "tabletop"]
+
+object_libraries:
+  - "configs/objects/google_scanned_objects_pantry.yaml"
+  - "configs/objects/household_and_grocery_presets.yaml"
+
+robot:
+  type: "fr3v2"
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [-0.35, -0.25, 0.625]
+  base_orientation: [0, 0, 0]
+  initial_pose: "ready"
+
+environment:
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+  ground:
+    urdf: "plane.urdf"
+
+camera:
+  distance: 0.95
+  yaw: 78
+  pitch: -35
+  target: [0.04, 0.08, 0.70]
+  views:
+    top_down:
+      distance: 0.90
+      target: [0.04, 0.08, 0.69]
+    front:
+      distance: 0.90
+      target: [0.04, 0.08, 0.70]
+      yaw: 0
+      pitch: -18
+    back:
+      distance: 0.90
+      target: [0.04, 0.08, 0.70]
+      yaw: 180
+      pitch: -18
+
+objects:
+  - id: "cereal_box"
+    preset: "gso_vans_cereal_honey_nut_crunch_11_oz_box"
+    position: [-0.10, 0.12, 0.625]
+    orientation_euler: [0.0, 0.0, 0.08]
+    label:
+      text: "Google scanned cereal box"
+      offset: [0.0, 0.0, 0.33]
+      color: [0.95, 0.95, 0.95]
+      size: 1.0
+  - id: "gum_bottle"
+    preset: "gso_orbit_bubblemint_mini_bottle_6_ct"
+    position: [0.05, 0.04, 0.625]
+    orientation_euler: [0.0, 0.0, -0.25]
+    label:
+      text: "Google scanned gum bottle"
+      offset: [0.0, 0.0, 0.16]
+      color: [0.95, 0.95, 0.95]
+      size: 1.0
+  - id: "sparkling_water_pack"
+    preset: "gso_nestle_pure_life_exotics_sparkling_water_strawberry_dragon_fruit_8_count_12_fl_oz_can"
+    position: [0.20, 0.16, 0.625]
+    orientation_euler: [0.0, 0.0, -0.35]
+    label:
+      text: "Google scanned can pack"
+      offset: [0.0, 0.0, 0.18]
+      color: [0.95, 0.95, 0.95]
+      size: 1.0
+  - { id: "support_oil_bottle", preset: "oil_bottle_proxy", position: [0.18, -0.06, 0.695] }
+  - { id: "support_spice_jar", preset: "spice_jar_proxy", position: [-0.02, -0.05, 0.670] }
+  - { id: "support_spice_cap", type: "cylinder", position: [-0.02, -0.05, 0.720], radius: 0.023, height: 0.01, color: "green" }

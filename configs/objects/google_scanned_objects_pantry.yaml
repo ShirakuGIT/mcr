@@ -1,0 +1,16 @@
+presets:
+  gso_vans_cereal_honey_nut_crunch_11_oz_box:
+    type: mesh
+    mesh: assets/datasets/google_scanned_objects/vans_cereal_honey_nut_crunch_11_oz_box/meshes/model.obj
+    mesh_scale: [1.0, 1.0, 1.0]
+    mass: 0.35
+  gso_orbit_bubblemint_mini_bottle_6_ct:
+    type: mesh
+    mesh: assets/datasets/google_scanned_objects/orbit_bubblemint_mini_bottle_6_ct/meshes/model.obj
+    mesh_scale: [1.0, 1.0, 1.0]
+    mass: 0.18
+  gso_nestle_pure_life_exotics_sparkling_water_strawberry_dragon_fruit_8_count_12_fl_oz_can:
+    type: mesh
+    mesh: assets/datasets/google_scanned_objects/nestle_pure_life_exotics_sparkling_water_strawberry_dragon_fruit_8_count_12_fl_oz_can/meshes/model.obj
+    mesh_scale: [1.0, 1.0, 1.0]
+    mass: 0.45
