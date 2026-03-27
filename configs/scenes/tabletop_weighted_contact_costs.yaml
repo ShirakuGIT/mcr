@@ -1,0 +1,90 @@
+name: "Tabletop Weighted Contact Costs"
+description: "Contact-aware scene with semantic object costs and labels."
+tags: ["contact-aware", "weighted-costs", "tabletop"]
+
+robot:
+  type: "fr3v2"
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [0.0, -0.45, 0.625]
+  base_orientation: [0, 0, 0]
+  initial_pose: "ready"
+
+environment:
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+  ground:
+    urdf: "plane.urdf"
+
+camera:
+  distance: 1.0
+  yaw: 90
+  pitch: -45
+  target: [0.0, 0.08, 0.625]
+
+objects:
+  - id: "fragile_bear"
+    type: "box"
+    position: [-0.12, 0.15, 0.705]
+    half_extents: [0.04, 0.03, 0.08]
+    color: "brown"
+    label:
+      text: "Fragile (8)"
+      offset: [0.0, 0.0, 0.12]
+      color: [0.9, 0.2, 0.2]
+      size: 1.2
+  - { id: "fragile_bear_hat", type: "box", position: [-0.12, 0.15, 0.805], half_extents: [0.035, 0.035, 0.02], color: "red" }
+  - id: "glass"
+    type: "cylinder"
+    position: [0.10, 0.05, 0.665]
+    radius: 0.03
+    height: 0.08
+    color: [0.85, 0.85, 0.90, 0.6]
+    label:
+      text: "Glass (3)"
+      offset: [0.0, 0.0, 0.12]
+      color: [0.9, 0.2, 0.2]
+      size: 1.2
+  - id: "movable_bottle"
+    type: "cylinder"
+    position: [-0.05, 0.00, 0.675]
+    radius: 0.022
+    height: 0.10
+    color: "green"
+    label:
+      text: "Movable (-1)"
+      offset: [0.0, 0.0, 0.12]
+      color: [0.1, 0.9, 0.1]
+      size: 1.2
+  - id: "plate"
+    type: "cylinder"
+    position: [0.15, 0.18, 0.635]
+    radius: 0.05
+    height: 0.015
+    color: "orange"
+    label:
+      text: "Plate (3)"
+      offset: [0.0, 0.0, 0.08]
+      color: [0.9, 0.2, 0.2]
+      size: 1.2
+  - id: "container"
+    type: "cylinder"
+    position: [-0.18, -0.05, 0.660]
+    radius: 0.025
+    height: 0.07
+    color: [0.3, 0.6, 0.3, 1.0]
+    label:
+      text: "Container (5)"
+      offset: [0.0, 0.0, 0.12]
+      color: [0.9, 0.2, 0.2]
+      size: 1.2
+  - id: "goal"
+    type: "sphere"
+    position: [0.20, 0.20, 0.650]
+    radius: 0.025
+    color: "yellow"
+    label:
+      text: "Goal"
+      offset: [0.0, 0.0, 0.10]
+      color: [0.1, 0.9, 0.1]
+      size: 1.2

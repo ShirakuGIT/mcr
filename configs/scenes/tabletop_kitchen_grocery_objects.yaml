@@ -1,0 +1,36 @@
+name: "Tabletop Kitchen Grocery Objects"
+description: "Kitchen and grocery scene using primitive proxies for food and pantry items."
+tags: ["kitchen", "grocery", "tabletop", "objects"]
+
+robot:
+  type: "fr3v2"
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [-0.35, -0.25, 0.625]
+  base_orientation: [0, 0, 0]
+  initial_pose: "ready"
+
+environment:
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+  ground:
+    urdf: "plane.urdf"
+
+camera:
+  distance: 0.9
+  yaw: 80
+  pitch: -40
+  target: [0.05, 0.02, 0.675]
+
+objects:
+  - { id: "tomato", type: "sphere", position: [-0.10, 0.05, 0.660], radius: 0.035, color: "red" }
+  - { id: "broccoli", type: "sphere", position: [-0.05, -0.05, 0.655], radius: 0.03, color: "dark_green" }
+  - { id: "spice_jar", type: "cylinder", position: [0.05, 0.08, 0.670], radius: 0.022, height: 0.09, color: [0.3, 0.15, 0.05, 1.0] }
+  - { id: "spice_jar_cap", type: "cylinder", position: [0.05, 0.08, 0.720], radius: 0.023, height: 0.01, color: "green" }
+  - { id: "dressing_bottle", type: "cylinder", position: [0.15, 0.10, 0.705], radius: 0.028, height: 0.16, color: "white" }
+  - { id: "dressing_label", type: "cylinder", position: [0.15, 0.10, 0.685], radius: 0.029, height: 0.06, color: "light_blue" }
+  - { id: "oil_bottle", type: "cylinder", position: [0.20, -0.05, 0.695], radius: 0.025, height: 0.14, color: "dark_green" }
+  - { id: "small_can", type: "cylinder", position: [0.08, -0.10, 0.655], radius: 0.025, height: 0.06, color: "gray" }
+  - { id: "small_can_lid", type: "cylinder", position: [0.08, -0.10, 0.690], radius: 0.026, height: 0.008, color: "yellow" }
+  - { id: "pepper_bottle", type: "cylinder", position: [-0.15, 0.15, 0.675], radius: 0.020, height: 0.10, color: "orange" }
+  - { id: "pepper_cap", type: "cylinder", position: [-0.15, 0.15, 0.730], radius: 0.021, height: 0.01, color: "red" }

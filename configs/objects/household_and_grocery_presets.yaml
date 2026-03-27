@@ -1,0 +1,39 @@
+presets:
+  tomato_proxy:
+    type: sphere
+    radius: 0.035
+    color: red
+  broccoli_proxy:
+    type: sphere
+    radius: 0.03
+    color: dark_green
+  spice_jar_proxy:
+    type: cylinder
+    radius: 0.022
+    height: 0.09
+    color: [0.3, 0.15, 0.05, 1.0]
+  dressing_bottle_proxy:
+    type: cylinder
+    radius: 0.028
+    height: 0.16
+    color: white
+  oil_bottle_proxy:
+    type: cylinder
+    radius: 0.025
+    height: 0.14
+    color: dark_green
+  pantry_can_proxy:
+    type: cylinder
+    radius: 0.025
+    height: 0.06
+    color: gray
+  pepper_bottle_proxy:
+    type: cylinder
+    radius: 0.02
+    height: 0.10
+    color: orange
+  duck_scan_placeholder:
+    type: urdf
+    urdf: duck_vhacd.urdf
+    scale: 0.9
+    use_fixed_base: false

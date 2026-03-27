@@ -1,0 +1,44 @@
+name: "Shelf Packed Cylinders Transfer"
+description: "Tall packed cylinders on a shelf-like tabletop arrangement."
+tags: ["transfer", "shelf", "cylinders"]
+
+robot:
+  type: "fr3v2"
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [0.0, -0.45, 0.625]
+  base_orientation: [0, 0, 0]
+  initial_pose: "ready"
+
+environment:
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+  ground:
+    urdf: "plane.urdf"
+
+camera:
+  distance: 1.0
+  yaw: 90
+  pitch: -35
+  target: [0.0, 0.15, 0.725]
+
+objects:
+  - { id: "back_panel", type: "box", position: [0.0, 0.30, 0.775], half_extents: [0.35, 0.005, 0.15], color: "white" }
+  - { id: "row1_a", type: "cylinder", position: [-0.20, 0.25, 0.725], radius: 0.020, height: 0.20, color: "red" }
+  - { id: "row1_b", type: "cylinder", position: [-0.14, 0.25, 0.745], radius: 0.020, height: 0.24, color: "green" }
+  - { id: "row1_c", type: "cylinder", position: [-0.08, 0.25, 0.715], radius: 0.020, height: 0.18, color: "blue" }
+  - { id: "row1_d", type: "cylinder", position: [-0.02, 0.25, 0.735], radius: 0.020, height: 0.22, color: "red" }
+  - { id: "row1_e", type: "cylinder", position: [0.04, 0.25, 0.705], radius: 0.020, height: 0.16, color: "purple" }
+  - { id: "row1_f", type: "cylinder", position: [0.10, 0.25, 0.755], radius: 0.020, height: 0.26, color: "green" }
+  - { id: "row1_g", type: "cylinder", position: [0.16, 0.25, 0.725], radius: 0.020, height: 0.20, color: "blue" }
+  - { id: "row2_a", type: "cylinder", position: [-0.17, 0.18, 0.735], radius: 0.020, height: 0.22, color: "brown" }
+  - { id: "row2_b", type: "cylinder", position: [-0.11, 0.18, 0.715], radius: 0.020, height: 0.18, color: "red" }
+  - { id: "row2_c", type: "cylinder", position: [-0.05, 0.18, 0.745], radius: 0.020, height: 0.24, color: "green" }
+  - { id: "row2_d", type: "cylinder", position: [0.01, 0.18, 0.705], radius: 0.020, height: 0.16, color: "purple" }
+  - { id: "row2_e", type: "cylinder", position: [0.07, 0.18, 0.725], radius: 0.020, height: 0.20, color: "blue" }
+  - { id: "row2_f", type: "cylinder", position: [0.13, 0.18, 0.735], radius: 0.020, height: 0.22, color: "red" }
+  - { id: "row3_a", type: "cylinder", position: [-0.14, 0.11, 0.725], radius: 0.020, height: 0.20, color: "green" }
+  - { id: "row3_b", type: "cylinder", position: [-0.08, 0.11, 0.705], radius: 0.020, height: 0.16, color: "brown" }
+  - { id: "row3_c", type: "cylinder", position: [-0.02, 0.11, 0.735], radius: 0.020, height: 0.22, color: "blue" }
+  - { id: "row3_d", type: "cylinder", position: [0.04, 0.11, 0.715], radius: 0.020, height: 0.18, color: "red" }
+  - { id: "row3_e", type: "cylinder", position: [0.10, 0.11, 0.745], radius: 0.020, height: 0.24, color: "green" }

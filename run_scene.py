@@ -1,66 +1,35 @@
 #!/usr/bin/env python3
-"""
-MCR PyBullet Scene Runner
+"""Legacy numbered scene runner backed by YAML scene configs."""
 
-Usage:
-    python run_scene.py <scene_number> [options]
-
-Scenes:
-    1  MCR Path Planning    - Colored cylinders scattered on tabletop
-    2  Approach (10 obj)    - 10 uniform blue cylinders
-    3  Approach (20 obj)    - 20 uniform blue cylinders
-    4  Transfer             - Tall packed colored cylinders on shelf
-    5  Contact-Aware        - Weighted objects with semantic costs
-    6  Push/Rotate          - Non-prehensile manipulation scene
-    7  Kitchen/Grocery      - Food-like objects on table
-    8  Cluttered Reach      - Dense clutter (IMPACT/LAPP style)
-    all                     - Launch all scenes sequentially
-
-Options:
-    --headless     Run without GUI (for testing)
-"""
 import sys
 
+from src.mcr.env.scene_catalog import SCENE_ALIASES, get_scene_path
+from src.mcr.env.scene_manager import SceneManager
 
-def run_scene(scene_num, gui=True):
-    if scene_num == 1:
-        from scenes.scene1_mcr_path import build_scene, main
-        main() if gui else build_scene(gui=False)
-    elif scene_num == 2:
-        from scenes.scene2_approach import build_scene
-        build_scene(num_objects=10, gui=gui)
-        if gui:
-            from scenes.scene_utils import run_simulation
-            import pybullet as p
-            run_simulation()
-            p.disconnect()
-    elif scene_num == 3:
-        from scenes.scene2_approach import build_scene
-        build_scene(num_objects=20, gui=gui)
-        if gui:
-            from scenes.scene_utils import run_simulation
-            import pybullet as p
-            run_simulation()
-            p.disconnect()
-    elif scene_num == 4:
-        from scenes.scene3_transfer import main
-        main()
-    elif scene_num == 5:
-        from scenes.scene4_contact_aware import main
-        main()
-    elif scene_num == 6:
-        from scenes.scene5_push_rotate import main
-        main()
-    elif scene_num == 7:
-        from scenes.scene6_kitchen import main
-        main()
-    elif scene_num == 8:
-        from scenes.scene7_cluttered_reach import main
-        main()
-    else:
+
+NUMBERED_SCENES = {
+    1: SCENE_ALIASES["scene1"],
+    2: SCENE_ALIASES["scene2"],
+    3: SCENE_ALIASES["scene3"],
+    4: SCENE_ALIASES["scene4"],
+    5: SCENE_ALIASES["scene5"],
+    6: SCENE_ALIASES["scene6"],
+    7: SCENE_ALIASES["scene7"],
+    8: SCENE_ALIASES["scene8"],
+}
+
+
+def run_scene(scene_num, gui=True, duration=10000):
+    scene_name = NUMBERED_SCENES.get(scene_num)
+    if scene_name is None:
         print(f"Unknown scene number: {scene_num}")
         print("Valid scenes: 1-8 or 'all'")
         sys.exit(1)
+
+    mgr = SceneManager(gui=gui)
+    mgr.init_simulation()
+    mgr.load_scene(get_scene_path(scene_name))
+    mgr.run_loop(duration=duration)
 
 
 def main():
@@ -72,9 +41,9 @@ def main():
 
     if sys.argv[1] == "all":
         for i in range(1, 9):
-            print(f"\n{'='*50}")
+            print(f"\n{'=' * 50}")
             print(f"Scene {i}")
-            print(f"{'='*50}")
+            print(f"{'=' * 50}")
             run_scene(i, gui=gui)
     else:
         scene_num = int(sys.argv[1])

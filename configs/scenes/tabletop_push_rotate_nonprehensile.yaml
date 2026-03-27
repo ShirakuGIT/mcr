@@ -1,0 +1,74 @@
+name: "Tabletop Push Rotate Nonprehensile"
+description: "Non-prehensile manipulation scene with pushable flat objects and protected clutter."
+tags: ["push", "rotate", "non-prehensile", "tabletop"]
+
+robot:
+  type: "fr3v2"
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [0.0, -0.45, 0.625]
+  base_orientation: [0, 0, 0]
+  initial_pose: "ready"
+
+environment:
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+  ground:
+    urdf: "plane.urdf"
+
+camera:
+  distance: 1.0
+  yaw: 90
+  pitch: -50
+  target: [0.0, 0.08, 0.625]
+
+objects:
+  - id: "paper_blue"
+    type: "box"
+    position: [-0.05, 0.05, 0.628]
+    half_extents: [0.12, 0.08, 0.002]
+    color: "light_blue"
+    mass: 0.05
+    orientation_euler: [0, 0, 0.3]
+    label:
+      text: "Push"
+      offset: [0.0, 0.0, 0.08]
+      color: [0.3, 0.3, 1.0]
+      size: 1.3
+  - id: "paper_yellow"
+    type: "box"
+    position: [-0.02, 0.08, 0.631]
+    half_extents: [0.10, 0.07, 0.002]
+    color: "yellow"
+    mass: 0.05
+    orientation_euler: [0, 0, -0.2]
+    label:
+      text: "Rotate"
+      offset: [0.0, 0.07, 0.08]
+      color: [0.8, 0.8, 0.0]
+      size: 1.3
+  - id: "coffee_cup"
+    type: "cylinder"
+    position: [0.15, 0.25, 0.665]
+    radius: 0.035
+    height: 0.08
+    color: "brown"
+    label:
+      text: "Unsafe"
+      offset: [0.0, 0.0, 0.12]
+      color: [1.0, 0.0, 0.0]
+      size: 1.3
+  - { id: "coffee_cup_handle", type: "box", position: [0.19, 0.25, 0.665], half_extents: [0.015, 0.005, 0.02], color: "brown" }
+  - id: "safe_box"
+    type: "box"
+    position: [-0.20, 0.00, 0.645]
+    half_extents: [0.03, 0.02, 0.02]
+    color: "green"
+    mass: 0.02
+    label:
+      text: "Safe"
+      offset: [0.0, 0.0, 0.10]
+      color: [0.0, 1.0, 0.0]
+      size: 1.3
+  - { id: "packet", type: "box", position: [0.22, -0.05, 0.635], half_extents: [0.04, 0.03, 0.008], color: "orange", mass: 0.03 }
+  - { id: "goal", type: "sphere", position: [0.20, 0.15, 0.640], radius: 0.015, color: "green" }

@@ -1,0 +1,93 @@
+# MCR Robotics
+
+PyBullet scenes for minimum constraint removal experiments, FR3 visualization, and scene prototyping with YAML-driven configurations.
+
+## Structure
+- `src/mcr/`: package code for scene loading, robot loading, and environment orchestration.
+- `configs/scenes/`: scene definitions in YAML.
+- `assets/`: URDFs and meshes used by the runtime.
+- `docs/datasets.md`: recommended external object datasets for replacing primitive placeholders with scanned meshes.
+- `PROCESS.md`: working notes and refactor history.
+
+## Environment
+Use either Pixi or Conda.
+
+### Pixi
+```bash
+pixi run list-scenes
+pixi run run --scene tabletop_kitchen_grocery_objects
+```
+
+### Conda
+```bash
+conda env create -f environment.yml
+conda activate mcr-robotics
+python run.py --list-scenes
+python run.py --scene tabletop_scattered_cylinders_path_planning
+```
+
+## Scene Authoring
+Scenes live under `configs/scenes/` and follow a data-first layout:
+
+```yaml
+name: "Example Scene"
+robot:
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [-0.35, -0.30, 0.625]
+  initial_pose: "ready"
+environment:
+  ground:
+    urdf: "plane.urdf"
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+camera:
+  distance: 0.9
+  yaw: 80
+  pitch: -40
+  target: [0.05, 0.02, 0.675]
+objects:
+  - id: "goal"
+    type: "sphere"
+    position: [0.2, 0.15, 0.64]
+    radius: 0.02
+    color: "green"
+    label:
+      text: "Goal"
+      offset: [0.0, 0.0, 0.08]
+```
+
+Supported object types:
+- `cylinder`
+- `box`
+- `sphere`
+- `mesh`
+- `proc_grid`
+
+## Scene Catalog
+- `tabletop_scattered_cylinders_path_planning`
+- `tabletop_uniform_cylinders_approach_10_objects`
+- `tabletop_uniform_cylinders_approach_20_objects`
+- `shelf_packed_cylinders_transfer`
+- `tabletop_weighted_contact_costs`
+- `tabletop_push_rotate_nonprehensile`
+- `tabletop_kitchen_grocery_objects`
+- `tabletop_kitchen_grocery_dataset_staging`
+- `tabletop_dense_household_clutter_reach`
+
+Older scene names such as `tabletop_cluttered_path` still resolve through aliases in the catalog.
+
+## Object Presets
+Reusable object definitions can live in `configs/objects/` and be attached to a scene with `object_libraries`.
+
+```yaml
+object_libraries:
+  - "configs/objects/household_and_grocery_presets.yaml"
+
+objects:
+  - id: "tomato"
+    preset: "tomato_proxy"
+    position: [-0.10, 0.05, 0.660]
+```
+
+This lets you swap a primitive proxy for a mesh or URDF-backed asset by editing one preset instead of every scene.

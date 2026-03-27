@@ -1,0 +1,43 @@
+name: "Tabletop Uniform Cylinders Approach 20 Objects"
+description: "Approach scene with 20 blue cylinders and a brown goal object."
+tags: ["approach", "tabletop", "procedural-grid", "high-clutter"]
+
+robot:
+  type: "fr3v2"
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [-0.35, -0.30, 0.625]
+  base_orientation: [0, 0, 0]
+  initial_pose: "ready"
+
+environment:
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+  ground:
+    urdf: "plane.urdf"
+
+camera:
+  distance: 0.9
+  yaw: 70
+  pitch: -40
+  target: [0.1, 0.0, 0.625]
+
+objects:
+  - id: "approach_clutter"
+    type: "proc_grid"
+    item_type: "cylinder"
+    rows: 4
+    cols: 5
+    start_pos: [-0.05, -0.15, 0.685]
+    spacing: [0.07, 0.09]
+    jitter: 0.01
+    radius: 0.022
+    height: 0.12
+    color: "blue"
+    seed: 42
+  - id: "goal_object"
+    type: "cylinder"
+    position: [0.25, 0.10, 0.685]
+    radius: 0.025
+    height: 0.12
+    color: "brown"

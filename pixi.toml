@@ -1,0 +1,29 @@
+[project]
+name = "mcr-robotics"
+version = "0.1.0"
+description = "Minimum Constraint Removal (MCR) path planning in PyBullet"
+authors = ["Antigravity AI"]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = ">=3.10,<3.13"
+pybullet = ">=3.2"
+numpy = ">=1.20"
+pyyaml = ">=6.0"
+scipy = ">=1.8"
+matplotlib = ">=3.5"
+
+[tasks]
+run = "python run.py"
+list-scenes = "python run.py --list-scenes"
+scene1 = "python run.py --scene tabletop_scattered_cylinders_path_planning"
+scene2 = "python run.py --scene tabletop_uniform_cylinders_approach_10_objects"
+scene3 = "python run.py --scene tabletop_uniform_cylinders_approach_20_objects"
+scene4 = "python run.py --scene shelf_packed_cylinders_transfer"
+scene5 = "python run.py --scene tabletop_weighted_contact_costs"
+scene6 = "python run.py --scene tabletop_push_rotate_nonprehensile"
+scene7 = "python run.py --scene tabletop_kitchen_grocery_objects"
+scene8 = "python run.py --scene tabletop_dense_household_clutter_reach"
+scene9 = "python run.py --scene tabletop_kitchen_grocery_dataset_staging"
+gui-test = "python src/mcr/env/robot_manager.py --test-gui"

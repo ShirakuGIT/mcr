@@ -1,0 +1,45 @@
+name: "Tabletop Dense Household Clutter Reach"
+description: "Dense household clutter inspired by IMPACT and LAPP-style reachability scenes."
+tags: ["clutter", "reach", "household", "tabletop"]
+
+robot:
+  type: "fr3v2"
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [0.15, -0.50, 0.625]
+  base_orientation: [0, 0, 0]
+  initial_pose: "ready"
+
+environment:
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+  ground:
+    urdf: "plane.urdf"
+
+camera:
+  distance: 1.0
+  yaw: 90
+  pitch: -40
+  target: [0.0, 0.10, 0.675]
+
+objects:
+  - { id: "coke_bottle", type: "cylinder", position: [-0.05, 0.10, 0.725], radius: 0.028, height: 0.20, color: [0.35, 0.05, 0.05, 1.0] }
+  - { id: "blue_bucket", type: "cylinder", position: [-0.15, 0.05, 0.675], radius: 0.045, height: 0.10, color: "blue" }
+  - { id: "red_bowl", type: "cylinder", position: [0.05, 0.18, 0.650], radius: 0.06, height: 0.05, color: "red" }
+  - { id: "yogurt", type: "cylinder", position: [-0.18, 0.20, 0.665], radius: 0.035, height: 0.08, color: "white" }
+  - { id: "yogurt_label", type: "cylinder", position: [-0.18, 0.20, 0.655], radius: 0.036, height: 0.04, color: "purple" }
+  - { id: "cereal_box", type: "box", position: [0.10, 0.08, 0.685], half_extents: [0.035, 0.02, 0.06], color: "yellow" }
+  - { id: "pink_container", type: "cylinder", position: [0.08, 0.25, 0.655], radius: 0.03, height: 0.06, color: "pink" }
+  - id: "target"
+    type: "sphere"
+    position: [-0.08, 0.22, 0.650]
+    radius: 0.025
+    color: "green"
+    label:
+      text: "Target"
+      offset: [0.0, 0.0, 0.10]
+      color: [0.0, 1.0, 0.0]
+      size: 1.3
+  - { id: "brown_jar", type: "cylinder", position: [0.00, 0.00, 0.660], radius: 0.025, height: 0.07, color: "brown" }
+  - { id: "tall_bottle", type: "cylinder", position: [-0.12, -0.05, 0.715], radius: 0.018, height: 0.18, color: "dark_green" }
+  - { id: "back_container", type: "cylinder", position: [0.15, 0.22, 0.675], radius: 0.04, height: 0.10, color: "orange" }

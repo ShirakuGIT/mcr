@@ -1,0 +1,38 @@
+name: "Tabletop Scattered Cylinders Path Planning"
+description: "FR3 reaching over a tabletop with scattered colored cylinders inspired by the MCR path planning figure."
+tags: ["mcr", "tabletop", "path-planning", "cylinders"]
+
+robot:
+  type: "fr3v2"
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [-0.35, -0.35, 0.625]
+  base_orientation: [0, 0, 0]
+  initial_pose: "ready"
+
+environment:
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+  ground:
+    urdf: "plane.urdf"
+
+camera:
+  distance: 1.0
+  yaw: 90
+  pitch: -55
+  target: [0.05, 0.0, 0.625]
+
+objects:
+  - { id: "obstacle_red_left", type: "cylinder", position: [-0.05, -0.05, 0.675], radius: 0.020, height: 0.10, color: "red" }
+  - { id: "obstacle_blue_back", type: "cylinder", position: [-0.10, 0.05, 0.665], radius: 0.018, height: 0.08, color: "dark_blue" }
+  - { id: "obstacle_brown_center", type: "cylinder", position: [-0.02, 0.10, 0.685], radius: 0.022, height: 0.12, color: "brown" }
+  - { id: "obstacle_black_mid", type: "cylinder", position: [0.08, 0.02, 0.675], radius: 0.015, height: 0.10, color: "black" }
+  - { id: "obstacle_purple_high", type: "cylinder", position: [0.10, 0.12, 0.695], radius: 0.020, height: 0.14, color: "purple" }
+  - { id: "obstacle_gray_mid", type: "cylinder", position: [0.15, 0.05, 0.670], radius: 0.018, height: 0.09, color: "gray" }
+  - { id: "obstacle_red_front", type: "cylinder", position: [0.05, -0.10, 0.665], radius: 0.020, height: 0.08, color: "red" }
+  - { id: "obstacle_purple_left", type: "cylinder", position: [-0.08, -0.15, 0.660], radius: 0.022, height: 0.07, color: "purple" }
+  - { id: "obstacle_olive_back", type: "cylinder", position: [0.00, 0.20, 0.675], radius: 0.020, height: 0.10, color: "olive" }
+  - { id: "obstacle_green_right", type: "cylinder", position: [0.12, -0.08, 0.680], radius: 0.018, height: 0.11, color: "green" }
+  - { id: "obstacle_blue_far", type: "cylinder", position: [0.20, 0.15, 0.675], radius: 0.020, height: 0.10, color: "blue" }
+  - { id: "obstacle_orange_front", type: "cylinder", position: [0.25, -0.05, 0.665], radius: 0.015, height: 0.08, color: "orange" }
+  - { id: "obstacle_red_back", type: "cylinder", position: [0.18, 0.25, 0.670], radius: 0.020, height: 0.09, color: "red" }
