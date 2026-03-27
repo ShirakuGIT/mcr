@@ -38,3 +38,9 @@ Link: https://sites.google.com/view/sg-bot/dataset
 4. Use `tabletop_kitchen_grocery_dataset_staging` as the first replacement target because it already mixes presets with a stand-in scanned asset slot.
 5. `tabletop_kitchen_google_scanned_objects` now demonstrates three real imported Google scanned kitchen objects wired through reusable presets.
 6. `tabletop_pantry_google_scanned_objects` now demonstrates real imported cereal, gum-bottle, and canned-drink package meshes.
+
+## Version-Control Policy
+1. Keep normalized, scene-ready assets only when they are actually referenced by presets or scenes.
+2. Do not commit raw archives or temporary extraction directories; `.gitignore` is set up for ad-hoc pulls and local staging.
+3. When you keep imported assets in-repo, add or update a `SOURCES.md` file beside that asset family.
+4. Update this document when you add a new dataset source or a new normalization workflow.

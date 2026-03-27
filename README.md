@@ -112,3 +112,22 @@ python scripts/normalize_fuel_asset.py --emit-preset assets/datasets/google_scan
 ```
 
 That mirrors `texture.png` next to each OBJ, computes mesh extents, and prints a preset stub you can paste into `configs/objects/`.
+
+## Ad-Hoc Data Pulls
+The repo is structured so people can pull dataset assets as needed without polluting version control with raw archives and temporary downloads.
+
+Tracked:
+- normalized mesh assets you actually use in scenes
+- preset YAMLs in `configs/objects/`
+- provenance notes such as `SOURCES.md`
+
+Ignored:
+- raw archives
+- temporary download folders
+- local staging directories
+- virtual environments, caches, and other machine-local artifacts
+
+When you add a new asset family, update:
+1. `docs/datasets.md`
+2. `PROCESS.md`
+3. `assets/datasets/<family>/SOURCES.md` if you intend to keep the normalized assets in-repo
