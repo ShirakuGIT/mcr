@@ -18,7 +18,7 @@ def main():
         help="Name of the scene YAML file (without .yaml extension)",
     )
     parser.add_argument("--headless", action="store_true", help="Run without GUI")
-    parser.add_argument("--duration", type=int, default=10000, help="Simulation steps")
+    parser.add_argument("--duration", type=int, default=None, help="Simulation steps (default: run until Ctrl+C)")
     parser.add_argument(
         "--view",
         type=str,
@@ -58,7 +58,10 @@ def main():
     mgr = SceneManager(gui=not args.headless)
     mgr.init_simulation()
     mgr.load_scene(scene_path, view=args.view)
-    print(f"\nRunning simulation for {args.duration} steps...")
+    if args.duration is not None:
+        print(f"\nRunning simulation for {args.duration} steps...")
+    else:
+        print("\nRunning simulation (Ctrl+C to quit)...")
     mgr.run_loop(duration=args.duration)
 
 

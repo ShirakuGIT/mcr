@@ -321,12 +321,17 @@ class SceneManager:
                 return candidate.resolve()
         raise FileNotFoundError(f"Unable to resolve URDF asset: {path_value}")
 
-    def run_loop(self, duration=10000):
-        """Simple simulation loop."""
+    def run_loop(self, duration=None):
+        """Simple simulation loop. Runs until Ctrl+C if duration is None."""
         try:
-            for _ in range(duration):
-                p.stepSimulation()
-                time.sleep(1.0 / 240.0)
+            if duration is None:
+                while True:
+                    p.stepSimulation()
+                    time.sleep(1.0 / 240.0)
+            else:
+                for _ in range(duration):
+                    p.stepSimulation()
+                    time.sleep(1.0 / 240.0)
         except KeyboardInterrupt:
             print("Stopped.")
 

@@ -1,10 +1,15 @@
 name: mcr-robotics
 channels:
   - conda-forge
+  - defaults
 dependencies:
-  - python>=3.10,<3.13
-  - pybullet>=3.2
+  - python=3.12
+  - pybullet=3.25
   - numpy>=1.20
   - scipy>=1.8
   - pyyaml>=6.0
   - matplotlib>=3.5
+  - networkx>=2.8
+  - pip
+  - pip:
+    - -e .
