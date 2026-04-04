@@ -17,6 +17,7 @@ networkx = ">=2.8"
 
 [tasks]
 run = "python run.py"
+describe = "python run.py --headless --describe"
 list-scenes = "python run.py --list-scenes"
 list-views = "python run.py --list-views"
 scene1 = "python run.py --scene tabletop_scattered_cylinders_path_planning"

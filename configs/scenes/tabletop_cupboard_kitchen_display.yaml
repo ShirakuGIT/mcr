@@ -1,0 +1,166 @@
+name: "Tabletop Cupboard Kitchen Display"
+description: "Open-front shelf with visible columns, Google scanned objects placed neatly on shelves, positioned close to the robot arm."
+tags: ["kitchen", "cupboard", "google-scanned-objects", "tabletop"]
+
+object_libraries:
+  - "configs/objects/google_scanned_objects_kitchen.yaml"
+  - "configs/objects/google_scanned_objects_pantry.yaml"
+
+robot:
+  type: "fr3v2"
+  urdf: "assets/urdfs/fr3v2_local.urdf"
+  base_position: [-0.35, -0.30, 0.625]
+  base_orientation: [0, 0, 0]
+  initial_pose: "ready"
+
+environment:
+  table:
+    urdf: "table/table.urdf"
+    position: [0.0, 0.0, 0.0]
+  ground:
+    urdf: "plane.urdf"
+
+camera:
+  distance: 1.4
+  yaw: 70
+  pitch: -25
+  target: [0.05, 0.30, 0.85]
+  views:
+    close_up:
+      distance: 0.8
+      yaw: 75
+      pitch: -20
+      target: [0.05, 0.35, 1.10]
+    wide:
+      distance: 2.0
+      yaw: 55
+      pitch: -20
+      target: [0.05, 0.35, 0.85]
+
+# Open-front shelf with visible columns
+# Positioned close to the robot (y ~0.30–0.50), robot can easily reach over
+# Structure: 4 vertical columns, bottom panel, top panel, middle shelf, no front/back doors
+objects:
+  # --- Four visible columns (vertical supports at each corner) ---
+  - id: "column_front_left"
+    type: "box"
+    half_extents: [0.015, 0.015, 0.285]
+    position: [-0.235, 0.315, 0.90]
+    color: "brown"
+  - id: "column_front_right"
+    type: "box"
+    half_extents: [0.015, 0.015, 0.285]
+    position: [0.335, 0.315, 0.90]
+    color: "brown"
+  - id: "column_back_left"
+    type: "box"
+    half_extents: [0.015, 0.015, 0.285]
+    position: [-0.235, 0.485, 0.90]
+    color: "brown"
+  - id: "column_back_right"
+    type: "box"
+    half_extents: [0.015, 0.015, 0.285]
+    position: [0.335, 0.485, 0.90]
+    color: "brown"
+
+  # --- Bottom panel (floor of shelf) ---
+  - id: "shelf_bottom"
+    type: "box"
+    half_extents: [0.285, 0.10, 0.012]
+    position: [0.05, 0.40, 0.615]
+    color: "brown"
+
+  # --- Top panel (surface for objects on top) ---
+  - id: "shelf_top"
+    type: "box"
+    half_extents: [0.30, 0.12, 0.015]
+    position: [0.05, 0.40, 1.185]
+    color: "brown"
+
+  # --- Middle shelf ---
+  - id: "shelf_middle"
+    type: "box"
+    half_extents: [0.285, 0.10, 0.012]
+    position: [0.05, 0.40, 0.90]
+    color: "brown"
+
+  # --- Back panel ---
+  - id: "shelf_back"
+    type: "box"
+    half_extents: [0.285, 0.012, 0.285]
+    position: [0.05, 0.505, 0.90]
+    color: "brown"
+
+  # === Objects neatly arranged on TOP of shelf (z ≈ 1.20) ===
+  - id: "ramekin"
+    preset: "gso_threshold_ramekin_white_porcelain"
+    position: [-0.12, 0.40, 1.220]
+    orientation_euler: [0.0, 0.0, 0.0]
+    label:
+      text: "Ramekin"
+      offset: [0.0, 0.0, 0.10]
+      color: [0.9, 0.9, 0.9]
+      size: 1.0
+  - id: "teapot"
+    preset: "gso_threshold_porcelain_teapot_white"
+    position: [0.08, 0.40, 1.220]
+    orientation_euler: [0.0, 0.0, -0.3]
+    label:
+      text: "Teapot"
+      offset: [0.0, 0.0, 0.14]
+      color: [0.9, 0.9, 0.9]
+      size: 1.0
+  - id: "serving_bowl"
+    preset: "gso_threshold_porcelain_serving_bowl_coupe_white"
+    position: [0.22, 0.40, 1.220]
+    orientation_euler: [0.0, 0.0, 0.0]
+    label:
+      text: "Bowl"
+      offset: [0.0, 0.0, 0.10]
+      color: [0.9, 0.9, 0.9]
+      size: 1.0
+
+  # === Objects on the BOTTOM shelf (z ≈ 0.63) ===
+  - id: "orbit_bottle"
+    preset: "gso_orbit_bubblemint_mini_bottle_6_ct"
+    position: [-0.06, 0.42, 0.645]
+    orientation_euler: [0.0, 0.0, 0.0]
+
+  # === Objects on the MIDDLE shelf (z ≈ 0.92), placed further back so they don't fall ===
+  - id: "cereal_box"
+    preset: "gso_vans_cereal_honey_nut_crunch_11_oz_box"
+    position: [-0.08, 0.42, 0.940]
+    orientation_euler: [0.0, 0.0, 0.0]
+  - id: "sparkling_water"
+    preset: "gso_nestle_pure_life_exotics_sparkling_water_strawberry_dragon_fruit_8_count_12_fl_oz_can"
+    position: [0.12, 0.42, 0.940]
+    orientation_euler: [0.0, 0.0, 0.0]
+
+  # === Objects scattered on the table ===
+  # -- Google scanned tableware --
+  - id: "ramekin_table"
+    preset: "gso_threshold_ramekin_white_porcelain"
+    position: [-0.05, 0.02, 0.625]
+    orientation_euler: [0.0, 0.0, 0.5]
+  - id: "teapot_table"
+    preset: "gso_threshold_porcelain_teapot_white"
+    position: [0.10, -0.05, 0.625]
+    orientation_euler: [0.0, 0.0, -0.4]
+  - id: "bowl_table"
+    preset: "gso_threshold_porcelain_serving_bowl_coupe_white"
+    position: [-0.15, 0.12, 0.625]
+    orientation_euler: [0.0, 0.0, 0.2]
+
+  # -- Primitive proxy objects (groceries, condiments, fruit) --
+  - { id: "tomato", type: "sphere", position: [0.05, 0.15, 0.655], radius: 0.030, color: "red" }
+  - { id: "lemon", type: "sphere", position: [0.18, 0.08, 0.650], radius: 0.028, color: "yellow" }
+  - { id: "lime", type: "sphere", position: [0.14, 0.20, 0.650], radius: 0.025, color: "dark_green" }
+  - { id: "spice_jar", type: "cylinder", position: [-0.10, -0.08, 0.670], radius: 0.020, height: 0.08, color: [0.3, 0.15, 0.05, 1.0] }
+  - { id: "spice_jar_cap", type: "cylinder", position: [-0.10, -0.08, 0.715], radius: 0.021, height: 0.008, color: "gray" }
+  - { id: "oil_bottle", type: "cylinder", position: [0.22, -0.02, 0.695], radius: 0.022, height: 0.12, color: "dark_green" }
+  - { id: "pepper_shaker", type: "cylinder", position: [-0.18, -0.05, 0.675], radius: 0.018, height: 0.09, color: "orange" }
+  - { id: "pepper_cap", type: "cylinder", position: [-0.18, -0.05, 0.725], radius: 0.019, height: 0.008, color: "red" }
+  - { id: "soda_can", type: "cylinder", position: [0.02, -0.15, 0.655], radius: 0.025, height: 0.06, color: "gray" }
+  - { id: "soda_can_tab", type: "cylinder", position: [0.02, -0.15, 0.688], radius: 0.026, height: 0.006, color: "yellow" }
+  - { id: "mug", type: "cylinder", position: [-0.22, 0.05, 0.665], radius: 0.030, height: 0.09, color: "blue" }
+  - { id: "napkin", type: "box", half_extents: [0.05, 0.05, 0.008], position: [0.10, 0.22, 0.633], color: "white" }

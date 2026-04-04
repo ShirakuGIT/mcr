@@ -7,6 +7,9 @@ import sys
 from src.mcr import __version__
 from src.mcr.env.scene_catalog import get_scene_path, iter_scene_entries
 from src.mcr.env.scene_manager import SceneManager
+from src.mcr.scene_describe import describe_scene
+
+import pybullet as p
 
 
 def main():
@@ -29,6 +32,10 @@ def main():
     parser.add_argument("--list-views", action="store_true", help="List available camera viewpoints")
     parser.add_argument("--list-scenes", action="store_true", help="List available scene YAMLs")
     parser.add_argument("--version", action="store_true", help="Print package version")
+    parser.add_argument("--describe", action="store_true", help="Capture a frame and describe it via Ollama VLM")
+    parser.add_argument("--describe-model", type=str, default="llava", help="Ollama model for scene description (default: llava)")
+    parser.add_argument("--describe-prompt", type=str, default=None, help="Custom prompt for VLM description")
+    parser.add_argument("--save-frame", type=str, default=None, help="Save captured frame to this path before describing")
     args = parser.parse_args()
 
     if args.version:
@@ -58,6 +65,22 @@ def main():
     mgr = SceneManager(gui=not args.headless)
     mgr.init_simulation()
     mgr.load_scene(scene_path, view=args.view)
+
+    if args.describe:
+        print("\nCapturing scene frame for VLM description...")
+        desc = describe_scene(
+            model=args.describe_model,
+            prompt=args.describe_prompt,
+            save_frame=args.save_frame,
+        )
+        print("\n" + "=" * 60)
+        print("SCENE DESCRIPTION")
+        print("=" * 60)
+        print(desc)
+        print("=" * 60)
+        if args.headless:
+            p.disconnect(mgr.client_id)
+            return
     if args.duration is not None:
         print(f"\nRunning simulation for {args.duration} steps...")
     else:
